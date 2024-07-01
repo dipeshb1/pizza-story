@@ -12,10 +12,12 @@ function UpdateIngredients({ pizzaId, ingredients }) {
   const initialAddIngredients = pizza ? pizza.addIngredients : ingredients;
 
   function handleClick(item) {
-    const updatedAddIngredients = initialAddIngredients.filter(
-      (i) => i !== item,
-    );
-    const updatedRemoveIngredients = [...initialRemoveIngredients, item];
+    const updatedAddIngredients = initialAddIngredients.includes(item)
+      ? initialAddIngredients.filter((i) => i !== item)
+      : [...initialAddIngredients, item];
+    const updatedRemoveIngredients = initialRemoveIngredients.includes(item)
+      ? initialRemoveIngredients.filter((i) => i !== item)
+      : [...initialRemoveIngredients, item];
 
     dispatch(
       customizeItem({
@@ -41,6 +43,7 @@ function UpdateIngredients({ pizzaId, ingredients }) {
       {initialRemoveIngredients.map((item) => (
         <button
           key={item}
+          onClick={() => handleClick(item)}
           className="rounded-xl bg-red-200 px-2 text-sm capitalize text-red-700"
         >
           {item}

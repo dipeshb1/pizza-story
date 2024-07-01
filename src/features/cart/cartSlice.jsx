@@ -1,5 +1,4 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { act } from "react";
 
 const initialState = {
   cart: [],
@@ -31,7 +30,6 @@ const cartSlice = createSlice({
     },
     customizeItem(state, action) {
       const { pizzaId, removeIngredients, addIngredients } = action.payload;
-      console.log("Inside the cartSlice", addIngredients);
       const item = state.cart.find((item) => item.pizzaId === pizzaId);
       if (item) {
         item.removeIngredients = removeIngredients;
