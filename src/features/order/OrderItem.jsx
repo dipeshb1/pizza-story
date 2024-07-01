@@ -1,8 +1,8 @@
 import { formatCurrency } from "../../utilities/helpers";
 
-function OrderItem({ item, isLoadingIngredients, ingredients }) {
-  const { quantity, name, totalPrice, pizzaId } = item;
-  const orderedItem = ingredients?.find((i) => i.id === pizzaId) ?? [];
+function OrderItem({ item }) {
+  console.log(item);
+  const { quantity, name, totalPrice, addIngredients } = item;
   return (
     <li className="space-y-1 py-2">
       <div className="flex items-center justify-between">
@@ -12,9 +12,7 @@ function OrderItem({ item, isLoadingIngredients, ingredients }) {
         <p className="font-bold">{formatCurrency(totalPrice)}</p>
       </div>
       <p className="text-sm capitalize italic text-stone-500">
-        {isLoadingIngredients
-          ? "Loading..."
-          : orderedItem?.ingredients?.join(", ")}
+        {addIngredients.join(", ")}
       </p>
     </li>
   );

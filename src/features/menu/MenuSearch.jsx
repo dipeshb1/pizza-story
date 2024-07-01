@@ -1,6 +1,6 @@
 function MenuSearch({ setSearchKey }) {
   return (
-    <div className="flex w-screen items-center justify-center px-4">
+    <div className="mt-2 flex items-center justify-center px-4">
       <input
         type="text"
         placeholder="Search menu..."

@@ -26,6 +26,8 @@ function MenuItem({ pizza }) {
       pizzaId,
       unitPrice,
       totalPrice: unitPrice * 1,
+      addIngredients: ingredients,
+      removeIngredients: [],
     };
     dispatch(addItem(newItem));
   }
@@ -48,7 +50,7 @@ function MenuItem({ pizza }) {
             <p className="text-sm font-medium uppercase">Sold out</p>
           )}
           {inCart && (
-            <div className="flex items-center gap-3 sm:gap-8">
+            <div className="flex items-center gap-2 sm:gap-8">
               <UpdateItemQuantity
                 pizzaId={pizzaId}
                 currentQuantity={currentQuantity}

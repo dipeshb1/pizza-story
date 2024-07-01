@@ -1,4 +1,5 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { act } from "react";
 
 const initialState = {
   cart: [],
@@ -28,14 +29,29 @@ const cartSlice = createSlice({
 
       if (item.quantity === 0) cartSlice.caseReducers.deleteItem(state, action);
     },
+    customizeItem(state, action) {
+      const { pizzaId, removeIngredients, addIngredients } = action.payload;
+      console.log("Inside the cartSlice", addIngredients);
+      const item = state.cart.find((item) => item.pizzaId === pizzaId);
+      if (item) {
+        item.removeIngredients = removeIngredients;
+        item.addIngredients = addIngredients;
+      }
+    },
     clearCart(state, action) {
       state.cart = [];
     },
   },
 });
 
-export const { addItem, deleteItem, incrementItem, decrementItem, clearCart } =
-  cartSlice.actions;
+export const {
+  addItem,
+  deleteItem,
+  incrementItem,
+  decrementItem,
+  customizeItem,
+  clearCart,
+} = cartSlice.actions;
 export default cartSlice.reducer;
 
 const selectorItem = (state) => state.cart.cart;
