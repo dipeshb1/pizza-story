@@ -25,7 +25,7 @@ export default {
         screen: "100dvh",
       },
       animation: {
-        slideUp: "slideUp 0.4s ease-out",
+        slideUp: "slideUp 0.3s ease-out",
         btnFront: "btnFront 0.3s cubic-bezier(0.65, 0, 0.35, 1)",
         menuLoad: "slideUp 0.3s ease-out",
         slideFront: "slideFront 0.4s ease-out",

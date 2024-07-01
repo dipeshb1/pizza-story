@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { customizeItem } from "./cartSlice";
+import Button from "../../UI/Button";
 
 function UpdateIngredients({ pizzaId, ingredients }) {
   const dispatch = useDispatch();
@@ -31,24 +32,16 @@ function UpdateIngredients({ pizzaId, ingredients }) {
   return (
     <div className="flex flex-wrap gap-2">
       {initialAddIngredients.map((item) => (
-        <button
-          key={item}
-          onClick={() => handleClick(item)}
-          className="rounded-xl bg-green-200 px-2 text-sm capitalize text-green-700"
-        >
+        <Button key={item} onClick={() => handleClick(item)} type="green">
           {item}
           <span className="ml-2 text-xs text-red-300">❌</span>
-        </button>
+        </Button>
       ))}
       {initialRemoveIngredients.map((item) => (
-        <button
-          key={item}
-          onClick={() => handleClick(item)}
-          className="rounded-xl bg-red-200 px-2 text-sm capitalize text-red-700"
-        >
+        <Button key={item} onClick={() => handleClick(item)} type="red">
           {item}
           <span className="ml-2 text-sm text-red-300">➕</span>
-        </button>
+        </Button>
       ))}
     </div>
   );
